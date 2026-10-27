@@ -6,6 +6,8 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 
+import static utils.Config.API_BASE_URL;
+
 public class BaseApiTest {
 
     protected static RequestSpecification spec;
@@ -13,7 +15,7 @@ public class BaseApiTest {
     @BeforeAll
     public static void setUp() {
         spec = new RequestSpecBuilder()
-                .setBaseUri("https://jsonplaceholder.typicode.com")
+                .setBaseUri(API_BASE_URL)
                 .addFilter(new AllureRestAssured())
                 .build();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
